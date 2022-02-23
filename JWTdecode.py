@@ -2,6 +2,7 @@ import jwt
 from jwt import PyJWKClient
 from jwt.exceptions import ExpiredSignatureError
 from jwt.exceptions import InvalidAudienceError
+from jwt.exceptions import InvalidSignatureError
 import json 
 import argparse
 
@@ -68,7 +69,7 @@ def main():
 			
 		print(json.dumps(decoded_JWT, indent = 2))
 
-	except (ExpiredSignatureError, InvalidAudienceError) as error:
+	except (ExpiredSignatureError, InvalidSignatureError, InvalidAudienceError) as error:
 		print(f'Unable to decode the token, error: {error}')
 	
 
