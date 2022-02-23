@@ -1,6 +1,6 @@
 # JWT decode script
 
-Python script which decode a JWT.
+Python script which decodes a JWT.
 
 ## Requirements
 
@@ -30,4 +30,4 @@ Further options are:
 * `-a audience` to set the expected audience. Default is "https://wlcg.cern.ch/jwt/v1/any"
 * `-k jwkUrl` URL of the public RSA signing key. Default is "https://wlcg.cloud.cnaf.infn.it/jwk"
 
-Run `python JWTdecode.py -v` for help page.
+Run `python JWTdecode.py -h` for help page.
