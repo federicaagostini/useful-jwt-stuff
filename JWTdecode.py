@@ -42,9 +42,14 @@ def verify_JWT(jwkUrl, token, audience):
 	key = signing_key.key
 
 	header_data = jwt.get_unverified_header(token)
+	payload_data = decode_JWT(token)
 
-	data = jwt.decode(token, key, algorithms=[header_data['alg']], 
-		options={"verify_exp": True}, audience=audience)
+	if payload_data.get('aud') != None:
+		data = jwt.decode(token, key, algorithms=[header_data['alg']], 
+			options={"verify_exp": True}, audience=audience)
+	else: 
+		data = jwt.decode(token, key, algorithms=[header_data['alg']], 
+			options={"verify_exp": True})
 	
 	return data
 
@@ -64,7 +69,7 @@ def main():
 		print(json.dumps(decoded_JWT, indent = 2))
 
 	except (ExpiredSignatureError, InvalidAudienceError) as error:
-    			print(f'Unable to decode the token, error: {error}')
+		print(f'Unable to decode the token, error: {error}')
 	
 
 if __name__ == "__main__":
