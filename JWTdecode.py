@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import jwt
 from jwt import PyJWKClient
 from jwt.exceptions import ExpiredSignatureError
